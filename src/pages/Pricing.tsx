@@ -19,7 +19,7 @@ const Pricing = () => {
 
   const packages = [
     {
-      name: "Starter",
+      name: "Basic",
       price: "$2,500 - $4,500",
       timeline: "2 weeks",
       description: "Perfect for small businesses needing a professional online presence",
@@ -41,7 +41,7 @@ const Pricing = () => {
       popular: false
     },
     {
-      name: "Growth",
+      name: "Standard",
       price: "$5,500 - $9,500",
       timeline: "3-4 weeks",
       description: "For businesses ready to scale with advanced features and optimization",
@@ -64,7 +64,7 @@ const Pricing = () => {
       popular: true
     },
     {
-      name: "Scale",
+      name: "Premium",
       price: "$10,000+",
       timeline: "4-8 weeks",
       description: "Custom solutions for complex requirements and enterprise needs",
@@ -225,7 +225,7 @@ const Pricing = () => {
               {addOns.map((addon, index) => (
                 <div key={index} className="bg-card rounded-lg p-6 shadow-soft">
                   <h3 className="font-semibold mb-2">{addon.name}</h3>
-                  <div className="text-primary font-bold mb-3">{addon.price}</div>
+                  {/* <div className="text-primary font-bold mb-3">{addon.price}</div> */}
                   <p className="text-sm text-muted-foreground">{addon.description}</p>
                 </div>
               ))}
@@ -262,7 +262,7 @@ const Pricing = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-secondary text-secondary-foreground">
+        {/* <section className="py-20 bg-secondary text-secondary-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to get started?
@@ -282,7 +282,7 @@ const Pricing = () => {
               </Button>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />

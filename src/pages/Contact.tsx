@@ -152,20 +152,20 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-2 block">Company</label>
+                      <label className="text-sm font-medium mb-2 block">Business</label>
                       <Input
                         value={formData.company}
                         onChange={(e) => handleInputChange("company", e.target.value)}
-                        placeholder="Your company name"
+                        placeholder="Your Business name"
                       />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Project Type</label>
+                        <label className="text-sm font-medium mb-2 block">Requirement Type</label>
                         <Select value={formData.projectType} onValueChange={(value) => handleInputChange("projectType", value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select project type" />
+                            <SelectValue placeholder="Select Requirement type" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="website">Website Design</SelectItem>
@@ -209,11 +209,11 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-2 block">Project Details *</label>
+                      <label className="text-sm font-medium mb-2 block">Business Details *</label>
                       <Textarea
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Tell us about your project goals, target audience, and any specific requirements..."
+                        placeholder="Tell us about your business goals, target audience, and any specific requirements..."
                         rows={4}
                         required
                       />
@@ -268,7 +268,7 @@ const Contact = () => {
                   <CardContent className="space-y-4">
                     <div>
                       <h4 className="font-semibold">Location & Timezone</h4>
-                      <p className="text-sm text-muted-foreground">Based in EST timezone</p>
+                      <p className="text-sm text-muted-foreground">Based in IST timezone</p>
                     </div>
                     <div>
                       <h4 className="font-semibold">Response Time</h4>

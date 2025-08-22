@@ -69,7 +69,7 @@ const Services = () => {
         "Integration testing",
         "Deployment & monitoring"
       ],
-      timeline: "4-8 weeks",
+      timeline: "8-16 weeks",
       pricing: "$4,999 - $19,999",
       faqs: [
         {
@@ -106,7 +106,7 @@ const Services = () => {
         "Security implementation",
         "Testing & launch"
       ],
-      timeline: "3-6 weeks",
+      timeline: "16-20 weeks T&C*",
       pricing: "$3,999 - $14,999",
       faqs: [
         {
@@ -203,10 +203,10 @@ const Services = () => {
                           <div className="font-semibold text-primary mb-2">Timeline</div>
                           <div className="text-sm">{service.timeline}</div>
                         </div>
-                        <div className="bg-muted/50 rounded-lg p-4">
+                        {/* <div className="bg-muted/50 rounded-lg p-4">
                           <div className="font-semibold text-primary mb-2">Investment</div>
                           <div className="text-sm">{service.pricing}</div>
-                        </div>
+                        </div> */}
                       </div>
                       
                       <Button size="lg" asChild>
@@ -268,7 +268,7 @@ const Services = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-secondary text-secondary-foreground">
+        {/* <section className="py-20 bg-secondary text-secondary-foreground">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -287,7 +287,7 @@ const Services = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
       
       <Footer />

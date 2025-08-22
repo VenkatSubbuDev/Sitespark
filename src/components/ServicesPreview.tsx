@@ -10,7 +10,6 @@ const ServicesPreview = () => {
       title: "Website Design & Development",
       description: "Custom business websites that convert visitors into customers with modern design and optimized performance.",
       features: ["Responsive design", "SEO optimization", "Content management", "Analytics setup"],
-      startingPrice: "Starting at $2,999",
       href: "/services#websites"
     },
     {
@@ -18,7 +17,6 @@ const ServicesPreview = () => {
       title: "Web Applications",
       description: "Custom dashboards, portals, and web apps that streamline your business operations and improve efficiency.",
       features: ["Custom dashboards", "User authentication", "API integrations", "Database design"],
-      startingPrice: "Starting at $4,999",
       href: "/services#web-apps"
     },
     {
@@ -26,7 +24,6 @@ const ServicesPreview = () => {
       title: "E-commerce Solutions",
       description: "Complete online stores with secure checkout, inventory management, and payment processing integration.",
       features: ["Product catalogs", "Secure checkout", "Payment gateways", "Inventory tracking"],
-      startingPrice: "Starting at $3,999",
       href: "/services#ecommerce"
     },
     {
@@ -34,7 +31,6 @@ const ServicesPreview = () => {
       title: "Website Care Plans",
       description: "Ongoing maintenance, security updates, and performance monitoring to keep your site running smoothly.",
       features: ["Security updates", "Performance monitoring", "Content updates", "Technical support"],
-      startingPrice: "Starting at $299/month",
       href: "/services#care-plans"
     }
   ];

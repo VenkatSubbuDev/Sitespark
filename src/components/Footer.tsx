@@ -138,7 +138,7 @@ const Footer = () => {
             </ul>
             <div className="mt-6">
               <p className="text-sm text-muted-foreground">
-                Based in EST timezone<br />
+                Based in IST timezone<br />
                 Response within 24 hours
               </p>
             </div>
@@ -148,7 +148,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border/20 text-center">
           <p className="text-muted-foreground">
-            © {currentYear} SiteSpark. All rights reserved. Built with ⚡ and React.
+            © {currentYear} SiteSpark. All rights reserved.
           </p>
         </div>
       </div>

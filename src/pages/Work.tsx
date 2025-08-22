@@ -225,14 +225,14 @@ const Work = () => {
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline" className="flex-1" asChild>
                         <a href={study.url} target="_blank" rel="noopener noreferrer">
-                          View Live <ExternalLink className="ml-1 h-3 w-3" />
+                          Preview <ExternalLink className="ml-1 h-3 w-3" />
                         </a>
                       </Button>
-                      <Button size="sm" asChild>
+                      {/* <Button size="sm" asChild>
                         <Link to={`/work/${study.id}`}>
                           Case Study
                         </Link>
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ const Work = () => {
             
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-primary mb-2">100+</div>
+                <div className="text-4xl font-bold text-primary mb-2">50+</div>
                 <div className="text-muted-foreground">Projects Delivered</div>
               </div>
               <div>
