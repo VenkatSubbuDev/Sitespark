@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Check, ArrowRight, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import ProposalDialog from "@/components/ProposalDialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -196,15 +197,13 @@ const Pricing = () => {
                     </div>
                   )}
 
-                  <Button 
-                    className="w-full" 
-                    variant={pkg.popular ? "default" : "outline"}
-                    asChild
-                  >
-                    <Link to="/contact">
-                      Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <ProposalDialog>
+                    <Button className="w-full" variant={pkg.popular ? "default" : "outline"} asChild>
+                      <span>
+                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </Button>
+                  </ProposalDialog>
                 </div>
               ))}
             </div>

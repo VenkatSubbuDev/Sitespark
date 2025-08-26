@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProposalDialog from "@/components/ProposalDialog";
 
 const Work = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -283,11 +284,11 @@ const Work = () => {
               Let's discuss how we can help drive your growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">
-                  Get your proposal <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" asChild>
+                  <span>Get your proposal <ArrowRight className="ml-2 h-5 w-5" /></span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/pricing">View pricing</Link>
               </Button>

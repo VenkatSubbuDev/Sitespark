@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { MessageCircle, Mail, Clock, MapPin, Send } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ProposalDialog from "@/components/ProposalDialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -14,34 +15,68 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
+    business: "",
     budget: "",
     timeline: "",
-    projectType: "",
+    requirementType: "",
     message: ""
   });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<null | { ok: boolean; msg: string }>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      budget: "",
-      timeline: "",
-      projectType: "",
-      message: ""
-    });
+    setLoading(true);
+    const to = "dalingsubbu@gmail.com";
+    const subject = `Proposal request from ${formData.name || formData.email || "Website"}`;
+    const body = [`Name: ${formData.name}`, `Email: ${formData.email}`, `Business: ${formData.business}`, `Requirement Type: ${formData.requirementType}`, `Budget: ${formData.budget}`, `Timeline: ${formData.timeline}`, "", "Message:", formData.message].join("\n");
+
+    const formId = import.meta.env.VITE_FORMSPREE_FORM_ID;
+
+    (async () => {
+          try {
+        if (formId) {
+          await fetch(`https://formspree.io/f/${formId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              business: formData.business,
+              requirementType: formData.requirementType,
+              budget: formData.budget,
+              timeline: formData.timeline,
+              message: formData.message,
+            }),
+          });
+
+          toast({ title: "Request sent", description: "We've received your request and will follow up by email." });
+              setStatus({ ok: true, msg: "We've received your request and will follow up by email." });
+        } else {
+          window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          toast({ title: "Email prepared", description: "Your email client should open to send the proposal request." });
+              setStatus({ ok: true, msg: "Your email client should open to send the proposal request." });
+        }
+      } catch (err) {
+        console.error(err);
+        toast({ title: "Error", description: "Couldn't send request. Opening email client as fallback." });
+            setStatus({ ok: false, msg: "Couldn't send request. Opening email client as fallback." });
+        window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      } finally {
+        setFormData({
+          name: "",
+          email: "",
+          business: "",
+          budget: "",
+          timeline: "",
+          requirementType: "",
+          message: ""
+        });
+        setLoading(false);
+            // keep status visible briefly so animation can be seen
+            setTimeout(() => setStatus(null), 1200);
+      }
+    })();
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -119,7 +154,7 @@ const Contact = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
+              {/* Contact Form (inline on this page) */}
               <Card>
                 <CardHeader>
                   <CardTitle>Get Your Custom Proposal</CardTitle>
@@ -128,44 +163,29 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium mb-2 block">Name *</label>
-                        <Input
-                          value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
-                          placeholder="Your full name"
-                          required
-                        />
+                        <Input value={formData.name} onChange={(e) => handleInputChange("name", e.target.value)} required disabled={loading} />
                       </div>
                       <div>
                         <label className="text-sm font-medium mb-2 block">Email *</label>
-                        <Input
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
-                          placeholder="your@email.com"
-                          required
-                        />
+                        <Input type="email" value={formData.email} onChange={(e) => handleInputChange("email", e.target.value)} required disabled={loading} />
                       </div>
                     </div>
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Business</label>
-                      <Input
-                        value={formData.company}
-                        onChange={(e) => handleInputChange("company", e.target.value)}
-                        placeholder="Your Business name"
-                      />
+                      <Input value={formData.business} onChange={(e) => handleInputChange("business", e.target.value)} disabled={loading} />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium mb-2 block">Requirement Type</label>
-                        <Select value={formData.projectType} onValueChange={(value) => handleInputChange("projectType", value)}>
+                        <Select value={formData.requirementType} onValueChange={(v) => handleInputChange("requirementType", v)} disabled={loading}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select Requirement type" />
+                            <SelectValue placeholder="Select requirement type" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="website">Website Design</SelectItem>
@@ -176,25 +196,16 @@ const Contact = () => {
                           </SelectContent>
                         </Select>
                       </div>
+
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Budget Range</label>
-                        <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select budget range" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="under-5k">Under $5,000</SelectItem>
-                            <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                            <SelectItem value="10k-20k">$10,000 - $20,000</SelectItem>
-                            <SelectItem value="20k-plus">$20,000+</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <label className="text-sm font-medium mb-2 block">Budget</label>
+                        <Input value={formData.budget} onChange={(e) => handleInputChange("budget", e.target.value)} placeholder="Enter budget or ballpark" disabled={loading} />
                       </div>
                     </div>
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Timeline</label>
-                      <Select value={formData.timeline} onValueChange={(value) => handleInputChange("timeline", value)}>
+                      <Select value={formData.timeline} onValueChange={(v) => handleInputChange("timeline", v)} disabled={loading}>
                         <SelectTrigger>
                           <SelectValue placeholder="When do you need this completed?" />
                         </SelectTrigger>
@@ -210,19 +221,18 @@ const Contact = () => {
 
                     <div>
                       <label className="text-sm font-medium mb-2 block">Business Details *</label>
-                      <Textarea
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Tell us about your business goals, target audience, and any specific requirements..."
-                        rows={4}
-                        required
-                      />
+                      <Textarea value={formData.message} onChange={(e) => handleInputChange("message", e.target.value)} rows={4} required disabled={loading} />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
-                      <Send className="mr-2 h-4 w-4" />
-                      Get My Proposal
-                    </Button>
+                    <div className="flex justify-end items-center space-x-2">
+                        <Button variant="outline" onClick={() => setFormData({ name: "", email: "", business: "", budget: "", timeline: "", requirementType: "", message: "" })} disabled={loading}>Cancel</Button>
+                        <Button type="submit" disabled={loading}>{loading ? 'Sending...' : (<><Send className="mr-2 h-4 w-4" /> Send Request</>)}</Button>
+                    </div>
+                    {status ? (
+                      <div className={`mt-3 p-3 rounded-md ${status.ok ? 'bg-green-50 text-green-900 animate-toast-success' : 'bg-red-50 text-red-900 animate-toast-error'}`} role="status" aria-live="polite">
+                        {status.msg}
+                      </div>
+                    ) : null}
                   </form>
                 </CardContent>
               </Card>

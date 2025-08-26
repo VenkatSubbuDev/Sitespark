@@ -1,6 +1,7 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ProposalDialog from "@/components/ProposalDialog";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -35,12 +36,14 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button size="lg" className="group" asChild>
-                <Link to="/contact">
-                  Get a proposal
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" className="group" asChild>
+                  <span>
+                    Get a proposal
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </ProposalDialog>
               
               <Button size="lg" variant="outline" className="group" asChild>
                 <Link to="/work">

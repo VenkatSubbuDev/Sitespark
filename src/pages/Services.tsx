@@ -4,6 +4,7 @@ import { Globe, Monitor, ShoppingBag, Shield, Check, ArrowRight } from "lucide-r
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ProposalDialog from "@/components/ProposalDialog";
 
 const Services = () => {
   const services = [
@@ -209,9 +210,11 @@ const Services = () => {
                         </div> */}
                       </div>
                       
-                      <Button size="lg" asChild>
-                        <Link to="/contact">Get Started</Link>
-                      </Button>
+                      <ProposalDialog>
+                        <Button size="lg" asChild>
+                          <span>Get Started</span>
+                        </Button>
+                      </ProposalDialog>
                     </div>
                     
                     {/* Details */}

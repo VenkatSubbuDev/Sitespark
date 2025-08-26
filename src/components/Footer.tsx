@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ProposalDialog from "@/components/ProposalDialog";
 import { Zap, Instagram, Twitter, Linkedin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -44,9 +45,11 @@ const Footer = () => {
               Get a custom proposal for your next web project in 24 hours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <Link to="/contact">Get Your Proposal</Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                  <span>Get Your Proposal</span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/work">View Our Work</Link>
               </Button>

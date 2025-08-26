@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, Users, Zap, Globe, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProposalDialog from "@/components/ProposalDialog";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -89,9 +90,11 @@ const About = () => {
               We combine beautiful design with conversion-focused strategy and rock-solid development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">Work with us</Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" asChild>
+                  <span>Work with us</span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/work">See our work</Link>
               </Button>
@@ -229,11 +232,11 @@ const About = () => {
               Let's discuss your project and show you exactly how we can help your business grow online.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <Link to="/contact">
-                  Start your project <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                  <span>Start your project <ArrowRight className="ml-2 h-5 w-5" /></span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/pricing">View pricing</Link>
               </Button>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProposalDialog from "@/components/ProposalDialog";
 
 const Blog = () => {
   useEffect(() => {
@@ -256,11 +257,11 @@ const Blog = () => {
               Let's apply these proven techniques to your website and drive real results for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link to="/contact">
-                  Get your proposal <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" asChild>
+                  <span>Get your proposal <ArrowRight className="ml-2 h-5 w-5" /></span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/work">See our work</Link>
               </Button>

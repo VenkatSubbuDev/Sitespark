@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProposalDialog from "@/components/ProposalDialog";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
@@ -59,9 +60,11 @@ const Header = () => {
           {/* CTA Button & Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Button variant="outline" asChild>
-              <Link to="/contact">Get Proposal</Link>
-            </Button>
+            <ProposalDialog>
+              <Button variant="outline" asChild>
+                <span>Get Proposal</span>
+              </Button>
+            </ProposalDialog>
           </div>
 
           {/* Mobile controls */}
@@ -102,9 +105,11 @@ const Header = () => {
                 </NavLink>
               ))}
               <div className="px-3 py-2">
-                <Button className="w-full" asChild>
-                  <Link to="/contact">Get Proposal</Link>
-                </Button>
+                <ProposalDialog>
+                  <Button className="w-full" asChild>
+                    <span>Get Proposal</span>
+                  </Button>
+                </ProposalDialog>
               </div>
             </div>
           </div>

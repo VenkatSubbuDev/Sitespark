@@ -117,7 +117,7 @@ const PortfolioHighlights = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="bg-transparent border-border hover:bg-card" asChild>
+          <Button size="lg" variant="outline" className="bg-transparent border-border hover:bg-primary hover:text-primary-foreground" asChild>
             <Link to="/work">
               View All Case Studies
               <ExternalLink className="ml-2 h-4 w-4" />
