@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -32,14 +32,27 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <NavLink
                 key={item.name}
                 to={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+                className={({ isActive }) =>
+                  `transition-colors duration-200 relative group ${
+                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
               >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </Link>
+                {({ isActive }) => (
+                  <>
+                    <span>{item.name}</span>
+                    <span
+                      className={
+                        "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 " +
+                        (isActive ? "w-full" : "w-0 group-hover:w-full")
+                      }
+                    />
+                  </>
+                )}
+              </NavLink>
             ))}
           </nav>
 
@@ -73,14 +86,20 @@ const Header = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-card rounded-lg mt-2 shadow-soft">
               {navigation.map((item) => (
-                <Link
+                <NavLink
                   key={item.name}
                   to={item.href}
-                  className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                      isActive
+                        ? "text-foreground bg-muted"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`
+                  }
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               ))}
               <div className="px-3 py-2">
                 <Button className="w-full" asChild>

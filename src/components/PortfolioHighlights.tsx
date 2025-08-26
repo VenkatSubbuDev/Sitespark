@@ -45,7 +45,7 @@ const PortfolioHighlights = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary text-secondary-foreground">
+    <section className="py-20 bg-card text-card-foreground">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -64,7 +64,7 @@ const PortfolioHighlights = () => {
               alt="Portfolio showcase of modern business websites" 
               className="w-full h-auto"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent"></div>
           </div>
         </div>
         

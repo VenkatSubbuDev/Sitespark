@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary text-secondary-foreground">
+    <footer className="bg-card text-card-foreground">
       {/* CTA Section */}
       <div className="border-b border-border/20">
         <div className="container mx-auto px-4 py-16">

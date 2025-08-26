@@ -219,7 +219,7 @@ const Blog = () => {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-20 bg-secondary text-secondary-foreground">
+  <section className="py-20 bg-card text-card-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Stay updated with our latest insights
