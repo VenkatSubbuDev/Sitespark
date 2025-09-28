@@ -37,7 +37,8 @@ const ProposalForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     e.preventDefault();
     setLoading(true);
 
-    const to = "dalingsubbu@gmail.com";
+  // primary recipients for mailto fallback (multiple recipients separated by comma)
+  const to = "dalingsubbu@gmail.com,jambulaiah.b@gmail.com";
     const subject = `Proposal request from ${formData.name || formData.email || "Website"}`;
     const body = [`Name: ${formData.name}`, `Email: ${formData.email}`, `Business: ${formData.business}`, `Requirement Type: ${formData.requirementType}`, `Budget: ${formData.budget}`, `Timeline: ${formData.timeline}`, "", "Message:", formData.message].join("\n");
 
@@ -181,7 +182,7 @@ const ProposalDialog: React.FC<React.PropsWithChildren<{}>> = ({ children }) => 
         {children as any}
       </DialogTrigger>
 
-  <DialogContent className="animate-pop-in premium-glow">
+  <DialogContent>
         <DialogHeader>
           <DialogTitle>Get Your Custom Proposal</DialogTitle>
           <DialogDescription>Tell us about your project and we'll send a proposal within 24 hours.</DialogDescription>

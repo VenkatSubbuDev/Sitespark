@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { MessageCircle, Mail, Clock, MapPin, Send } from "lucide-react";
@@ -27,7 +28,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const to = "dalingsubbu@gmail.com";
+  // primary recipients for mailto fallback (multiple recipients separated by comma)
+  const to = "dalingsubbu@gmail.com,jambulaiah.b@gmail.com";
     const subject = `Proposal request from ${formData.name || formData.email || "Website"}`;
     const body = [`Name: ${formData.name}`, `Email: ${formData.email}`, `Business: ${formData.business}`, `Requirement Type: ${formData.requirementType}`, `Budget: ${formData.budget}`, `Timeline: ${formData.timeline}`, "", "Message:", formData.message].join("\n");
 
@@ -291,6 +293,28 @@ const Contact = () => {
                   </CardContent>
                 </Card>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-card text-card-foreground">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to spark your business growth?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Get a custom proposal for your next web project in 24 hours.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <ProposalDialog>
+                <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                  <span>Get Your Proposal</span>
+                </Button>
+              </ProposalDialog>
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/work">View Our Work</Link>
+              </Button>
             </div>
           </div>
         </section>

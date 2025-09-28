@@ -34,30 +34,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-card text-card-foreground">
-      {/* CTA Section */}
-      <div className="border-b border-border/20">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to spark your business growth?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Get a custom proposal for your next web project in 24 hours.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ProposalDialog>
-                <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                  <span>Get Your Proposal</span>
-                </Button>
-              </ProposalDialog>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/work">View Our Work</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">

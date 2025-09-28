@@ -261,27 +261,26 @@ const Pricing = () => {
         </section>
 
         {/* CTA Section */}
-        {/* <section className="py-20 bg-secondary text-secondary-foreground">
+        <section className="py-20 bg-card text-card-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to get started?
+              Ready to spark your business growth?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Get a detailed proposal with exact pricing, timeline, and deliverables for your project. 
-              No obligations, no pressure.
+              Get a custom proposal for your next web project in 24 hours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <Link to="/contact">
-                  Get your proposal <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <ProposalDialog>
+                <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                  <span>Get Your Proposal</span>
+                </Button>
+              </ProposalDialog>
               <Button size="lg" variant="outline" asChild>
-                <Link to="/work">See our work</Link>
+                <Link to="/work">View Our Work</Link>
               </Button>
             </div>
           </div>
-        </section> */}
+        </section>
       </main>
 
       <Footer />
